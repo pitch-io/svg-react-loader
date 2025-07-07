@@ -38,14 +38,13 @@ describe('svg-react-loader/lib/component/stringify', () => {
                         should.
                         equal(
                             'var React = require(\'react\');\n\n' +
-                            'function SvgReactComponent (props) {\n' +
-                            '    return React.createElement("svg",props,' +
+                            'function SvgReactComponent ({version = "1.1", x = "0px", y = "0px", viewBox = "0 0 16 16", enableBackground = "new 0 0 16 16", xmlSpace = "preserve", className = "simple", ...restProps}) {\n' +
+                            '    return React.createElement("svg",Object.assign({version: version, x: x, y: y, viewBox: viewBox, enableBackground: enableBackground, xmlSpace: xmlSpace, className: className}, restProps),' +
                             '[React.createElement("rect",{"x":"0","y":"0",' +
                             '"width":"16","height":"16","fill":"#fff","key":0}),' +
                             'React.createElement("text",{"key":1},"Foobar")' +
                             ']);\n' +
                             '}\n\n' +
-                            'SvgReactComponent.defaultProps = ' + JSON.stringify(expectedProps) + ';\n\n' +
                             'module.exports = SvgReactComponent;\n\n' +
                             'SvgReactComponent.default = SvgReactComponent;\n'
                         );
